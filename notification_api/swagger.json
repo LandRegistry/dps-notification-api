@@ -1,0 +1,128 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.1.0",
+    "title": "Notification API",
+    "description": "Provides RESTful API access to Notification resources in JSON representation"
+  },
+  "host": "notification-api:8080",
+  "basePath": "/v1",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/notifications": {
+      "post": {
+        "parameters": [
+          {
+            "name": "notification",
+            "in": "body",
+            "description": "The notification to be created",
+            "schema": {
+              "$ref": "#/definitions/PostNotificationRequest"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Notification has been created",
+            "headers": {
+              "Location": {
+                "description": "The location of the newly created notification",
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "405": {
+            "description": "Method not allowed"
+          },
+          "406": {
+            "description": "Not acceptable"
+          },
+          "415": {
+            "description": "Unsupported media type"
+          }
+        }
+      }
+    },
+    "/notifications/{notification_id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "notification_id",
+            "in": "path",
+            "type": "string",
+            "description": "ID of a notification",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Notification has been retrieved",
+            "schema": {
+              "$ref": "#/definitions/GetNotificationResponse"
+            }
+          },
+          "404": {
+            "description": "Notification not found"
+          },
+          "405": {
+            "description": "Method not allowed"
+          },
+          "406": {
+            "description": "Not acceptable"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PostNotificationRequest": {
+      "type": "object",
+      "properties": {
+        "email_address": {"type": ["string", "null"], "format": "email"},
+        "phone_number": {"type": ["string", "null"]},
+        "template_id": {"type": "string", "format": "uuid"},
+        "personalisation": {"type": "object"},
+        "reference": {"type": ["string", "null"]}
+      },
+      "oneOf": [{"required": ["email_address"]}, {"required": ["phone_number"]}],
+      "required": ["template_id", "personalisation"]
+    },
+    "GetNotificationResponse": {
+      "type": "object",
+      "properties": {
+        "id": {"type": "string", "format": "uuid"},
+        "type": {"type": "string", "enum": ["email", "sms", "letter"]},
+        "phone_number": {"type": ["string", "null"]},
+        "email_address": {"type": ["string", "null"]},
+        "line_1": {"type": ["string", "null"]},
+        "line_2": {"type": ["string", "null"]},
+        "line_3": {"type": ["string", "null"]},
+        "line_4": {"type": ["string", "null"]},
+        "line_5": {"type": ["string", "null"]},
+        "line_6": {"type": ["string", "null"]},
+        "postcode": {"type": ["string", "null"]},
+        "reference": {"type": ["string", "null"]},
+        "body": {"type": "string"},
+        "template": {
+          "type": "object",
+          "properties": {
+            "uri": {"type": "string", "format": "uri"},
+            "version": { "type": "integer" },
+            "id": {"type": "string", "format": "uuid"}
+          }
+        },
+        "subject": {"type": ["string", "null"]},
+        "status": {"type": "string", "enum": ["sending", "delivered", "permanent-failure", "temporary-failure", "technical-failure"]},
+        "completed_at": {"type": "string", "format": "date-time"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "sent_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}
