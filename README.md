@@ -34,13 +34,13 @@ Response: `201`
         "subject": "Test Message from DPS Beta",
         "body": "Hello Matthew, \r\n\r\nThis is a test email from the DPS service."
     },
-    "id": "c03eb8fb-a87e-4cb6-bd07-abd4e32a5ae0",
+    "id": "c03eb8fb-a87e-4cb6-bd07-123456789",
     "template": {
         "version": 1,
-        "uri": "https://api.notifications.service.gov.uk/services/89ad4221-dd11-423f-b725-81941e9e5033/templates/c8b58621-79e7-4ce1-a87f-ef6dde87a7e0",
+        "uri": "https://api.notifications.service.gov.uk/services/89ad4221-dd11-423f-b725-123456789/templates/c8b58621-79e7-4ce1-a87f-ef6dde87a7e0",
         "id": "c8b58621-79e7-4ce1-a87f-ef6dde87a7e0"
     },
-    "uri": "https://api.notifications.service.gov.uk/v2/notifications/c03eb8fb-a87e-4cb6-bd07-abd4e32a5ae0",
+    "uri": "https://api.notifications.service.gov.uk/v2/notifications/c03eb8fb-a87e-4cb6-bd07-123456789",
     "reference": null,
     "scheduled_for": null
 }
@@ -83,17 +83,17 @@ Response: `201`
 
 #### Email
 
-Request: `GET /v1/notifications/6d2b37b2-481b-4777-b3e3-bf6948216b65`
+Request: `GET /v1/notifications/6d2b37b2-481b-4777-b3e3-123456789`
 
 Response: `200`
 ```json
 {
-    "id": "c03eb8fb-a87e-4cb6-bd07-abd4e32a5ae0",
+    "id": "c03eb8fb-a87e-4cb6-bd07-123456789",
     "subject": "Test Message from DPS Beta",
     "template": {
         "version": 1,
-        "uri": "https://api.notifications.service.gov.uk/v2/template/c8b58621-79e7-4ce1-a87f-ef6dde87a7e0/version/1",
-        "id": "c8b58621-79e7-4ce1-a87f-ef6dde87a7e0"
+        "uri": "https://api.notifications.service.gov.uk/v2/template/c8b58621-79e7-4ce1-a87f-123456789/version/1",
+        "id": "c8b58621-79e7-4ce1-a87f-123456789"
     },
     "line_3": null,
     "line_2": null,
@@ -119,7 +119,7 @@ Response: `200`
 
 #### SMS
 
-Request `GET /v1/notifications/ce878f7f-e644-4b0d-9f7d-c6a1696ceb58`
+Request `GET /v1/notifications/ce878f7f-e644-4b0d-9f7d-123456789`
 
 Response: `200`
 ```json
@@ -129,7 +129,7 @@ Response: `200`
   "template": {
     "uri": "https://api.notifications.service.gov.uk/service",
     "version": 3,
-    "id": "a156f411-bfc7-47f5-8081-232d6eab409c"
+    "id": "a156f411-bfc7-47f5-8081-123456789"
   },
   "subject": null,
   "status": "delivered",
@@ -139,7 +139,7 @@ Response: `200`
   "type": "sms",
   "phone_number": "+447890123456",
   "email_address": null,
-  "id": "ce878f7f-e644-4b0d-9f7d-c6a1696ceb58",
+  "id": "ce878f7f-e644-4b0d-9f7d-123456789",
   "completed_at": "2017-03-13T15:52:45.109140Z",
   "created_at": "2017-03-13T15:52:43.624314Z",
   "line_6": null,
